@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "module": "es6",
+    "target": "es6",
+    "moduleResolution": "node",
+    "baseUrl": "src",
+    "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "jsx": "react",
+    "experimentalDecorators": true,
+    "removeComments": false
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}
