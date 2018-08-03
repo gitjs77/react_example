@@ -2,20 +2,28 @@ import * as React from "react";
 import { get } from '../backend';
 import './hello.css';
 
-type  User = {
+type HelloProps = {
+    name: string;
+    setSecondNameAtTheHelloCaller?(secondName: string): void;
+    // setSecondNameAtTheHelloCaller?(secondName: string): () => void;
+    // setSecondNameAtTheHelloCaller(): () => {}
+}
+
+type User = {
     id?: number;
     name?: string;
 }
 type HelloState = {
     name?: string;
-    users?: Array<User>;
+    users: Array<User>;
 }
 
-export class Hello extends React.Component<any, HelloState> {
-    constructor(props) {
+export class Hello extends React.Component<HelloProps, HelloState> {
+    constructor(props: HelloProps) {
         super(props);
 
         this.state = {
+            name: props.name,
             users: []
         }
     }
@@ -45,6 +53,16 @@ export class Hello extends React.Component<any, HelloState> {
                         </tr>
                     )}
                 </table>
+
+                <div>
+                    <h2>
+                    { this.state.name }
+                    </h2>
+                </div>
+
+                <button
+                    onClick={ () => this.props.setSecondNameAtTheHelloCaller('Кран') }>Write second name
+                </button>
             </div>
         );
     }
