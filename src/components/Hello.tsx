@@ -28,10 +28,10 @@ export class Hello extends React.Component<HelloProps, HelloState> {
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         get('/api/users')
-            .then((users: Array<any>) => {
-                this.setState({ users })
+            .then((response: Array<User>) => {
+                this.setState({ users: response })
             })
             .catch(e => console.log(e));
     }
@@ -46,12 +46,14 @@ export class Hello extends React.Component<HelloProps, HelloState> {
                         <th>ID</th>
                         <th>NAME</th>
                     </tr>
-                    {users.map((user, index) =>
+                    {
+                        users.map((user, index) =>
                         <tr key={ index }>
                             <td>{ user.id }</td>
                             <td>{ user.name }</td>
                         </tr>
-                    )}
+                        )
+                    }
                 </table>
 
                 <div>
