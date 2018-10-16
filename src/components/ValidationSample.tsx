@@ -125,8 +125,13 @@ export class ValidationSample extends React.Component<any, SampleState> {
 
     validate = () => {
         if (this.state.person.firstName.length >= 7 || !this.state.person.firstName.length) {
-            this.setState((prevState) => {
-                return {error: {...prevState.error, firstNameError: 'firstNameError'}}
+            // this.setState((prevState) => {
+            //     return {error: {...prevState.error, firstNameError: 'firstNameError'}}
+            // });
+            this.setState({
+                error: {
+                    firstNameError: 'firstNameError'
+                }
             });
         } else {
             this.setState((prevState) => {
