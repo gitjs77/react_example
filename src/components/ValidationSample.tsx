@@ -92,7 +92,9 @@ export class ValidationSample extends React.Component<any, SampleState> {
                                    value={ person.middleName }/>
                         </td>
                         <td>
-                            <h2>{ error.middleNameError }</h2>
+                            <div className='error-message'>
+                            { error.middleNameError }
+                            </div>
                         </td>
                     </tr>
                     </tbody>

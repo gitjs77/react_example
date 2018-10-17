@@ -1,3 +1,7 @@
 table, tr, td {
     border: 0 solid grey
 }
+
+.error-message {
+    color: #ff9900;
+}
