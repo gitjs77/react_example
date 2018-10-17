@@ -1,7 +1,6 @@
 import * as React from 'react';
 import '../styles/style.css';
 import { get } from '../backend';
-import { ValidationWithProperties } from './ValidationWithProperties';
 
 type Person = {
     firstName?: string;
@@ -21,16 +20,16 @@ type Error = {
     middleNameError?: string;
 }
 
-export class ValidationSample extends React.Component<any, SampleState> {
+export class ValidationWithProperties extends React.Component<any, SampleState> {
     constructor(props) {
         super(props);
         this.state = {
             errorText: '',
 
             person: {
-                firstName: '',
-                secondName: '',
-                middleName: ''
+                firstName: props.firstName,
+                secondName: props.secondName,
+                middleName: props.middleName
             },
 
             error: {
@@ -41,13 +40,13 @@ export class ValidationSample extends React.Component<any, SampleState> {
         }
     }
 
-    componentDidMount() {
-        get('/api/users/person')
-            .then((response: Person) => {
-                this.setState({ person: response })
-            })
-            .catch(e => console.log(e));
-    }
+    // componentDidMount() {
+    //     get('/api/users/person')
+    //         .then((response: Person) => {
+    //             this.setState({ person: response })
+    //         })
+    //         .catch(e => console.log(e));
+    // }
 
     render() {
         let {errorText, person, error} = this.state;
@@ -103,12 +102,6 @@ export class ValidationSample extends React.Component<any, SampleState> {
                     />
                 </div>
                 <h2>{ errorText }</h2>
-
-                <ValidationWithProperties
-                    firstName={'Test name'}
-                secondName={'Test second name'}
-                middleName={'Test middle name'}
-                />
             </div >
         );
     }
@@ -146,5 +139,4 @@ export class ValidationSample extends React.Component<any, SampleState> {
             });
         }
     };
-    //
 }
