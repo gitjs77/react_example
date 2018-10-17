@@ -9,16 +9,16 @@ type Person = {
     middleName?: string;
 }
 
-type SampleState = {
-    person: Person;
-    error: Error;
-    errorText?: string;
-}
-
 type Error = {
     firstNameError?: string;
     secondNameError?: string;
     middleNameError?: string;
+}
+
+type SampleState = {
+    person: Person;
+    error: Error;
+    errorText?: string;
 }
 
 export class ValidationSample extends React.Component<any, SampleState> {
